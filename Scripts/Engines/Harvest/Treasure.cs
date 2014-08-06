@@ -81,16 +81,14 @@ namespace Server.Engines.Harvest
 				{
 					// Required skill, min skill, max skill, message, type(s) 
 					new HarvestResource( 00.0, 00.0, 00.0, "You didn't find anything useful.", typeof( FertileDirt ) ),
-					new HarvestResource( 00.0, 00.0, 00.0, "You found a coin!", typeof( Gold ) ),
 					new HarvestResource( 00.0, 00.0, 00.0, "You found a seed.", typeof( Seed ) )
 				};
 
 			veins = new HarvestVein[]
 				{
 					// Chance, fallback chance, type, fallback type
-					new HarvestVein( 84.0, 00.0, res[0], null ),
-					new HarvestVein( 1.0, 00.0, res[1], null ), // Gold
-					new HarvestVein( 15.0, 00.0, res[2], null ) // Seed
+					new HarvestVein( 90.0, 00.0, res[0], null ),
+					new HarvestVein( 10.0, 00.0, res[1], null ) // Seed
 				};
 
 			treasuresAndTrinkets.Resources = res;
