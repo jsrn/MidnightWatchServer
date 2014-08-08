@@ -134,10 +134,7 @@ namespace Server.Items
 
 				AddPage( 0 );
 
-				AddBackground( 25, 10, 840, 600, 5054 );
-
-				AddImageTiled( 33, 20, 401, 181, 2624 );
-				AddAlphaRegion( 33, 20, 401, 181 );
+				AddBackground( 25, 10, 840, 550, 5054 );
 
 				AddHtml( 40, 20, 260, 30, "Starting Skill Scroll", true, false );
 
@@ -155,7 +152,8 @@ namespace Server.Items
 						continue;
 					}
 
-					AddHtml( 40, 60 + (fakeIndex * 30), 260, 30, name, true, false );
+					AddHtml( 40, 60 + (fakeIndex * 30), 220, 30, name, true, false );
+					AddButton( 260, 65 + (fakeIndex * 30), 4005, 4007, 0, GumpButtonType.Reply, 0 );
 				}
 
 				fakeIndex = 0;
@@ -169,7 +167,8 @@ namespace Server.Items
 						continue;
 					}
 
-					AddHtml( 310, 60 + (fakeIndex * 30), 260, 30, name, true, false );
+					AddHtml( 310, 60 + (fakeIndex * 30), 220, 30, name, true, false );
+					AddButton( 530, 65 + (fakeIndex * 30), 4005, 4007, 0, GumpButtonType.Reply, 0 );
 				}
 
 				fakeIndex = 0;
@@ -183,14 +182,9 @@ namespace Server.Items
 						continue;
 					}
 
-					AddHtml( 580, 60 + (fakeIndex * 30), 260, 30, name, true, false );
+					AddHtml( 580, 60 + (fakeIndex * 30), 220, 30, name, true, false );
+					AddButton( 800, 65 + (fakeIndex * 30), 4005, 4007, 0, GumpButtonType.Reply, 0 );
 				}
-
-				AddButton( 100, 172, 4005, 4007, 1, GumpButtonType.Reply, 0 );
-				AddHtmlLocalized( 135, 172, 120, 20, 1046362, 0xFFFFFF, false, false ); // Yes
-
-				AddButton( 275, 172, 4005, 4007, 0, GumpButtonType.Reply, 0 );
-				AddHtmlLocalized( 310, 172, 120, 20, 1046363, 0xFFFFFF, false, false ); // No
 			}
 
 			public override void OnResponse( NetState state, RelayInfo info )
