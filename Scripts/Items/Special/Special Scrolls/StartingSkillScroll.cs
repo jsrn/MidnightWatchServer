@@ -50,13 +50,13 @@ namespace Server.Items
 			return true;
 		}
 
-		public override void Use( Mobile from )
+		public override void Use( Mobile from, int skillIndex )
 		{
 			if ( !CanUse( from ) )
 				return;
 			
-			double tskill = from.Skills[Skill].Base; // value of skill without item bonuses etc
-			double tcap = from.Skills[Skill].Cap; // maximum value permitted
+			double tskill = from.Skills[skillIndex].Base; // value of skill without item bonuses etc
+			double tcap = from.Skills[skillIndex].Cap; // maximum value permitted
 			bool canGain = false;
 			
 			double newValue = Value;
@@ -64,7 +64,7 @@ namespace Server.Items
 			if ( ( tskill + newValue ) > tcap )
 				newValue = tcap - tskill;
 
-			if ( tskill < tcap && from.Skills[Skill].Lock == SkillLock.Up )
+			if ( tskill < tcap && from.Skills[skillIndex].Lock == SkillLock.Up )
 			{
 				if ( ( from.SkillsTotal + newValue * 10 ) > from.SkillsCap )
 				{
@@ -94,7 +94,7 @@ namespace Server.Items
 
 			from.SendLocalizedMessage( 1049513, GetNameLocalized() ); // You feel a surge of magic as the scroll enhances your ~1_type~!
 					
-			from.Skills[Skill].Base += newValue;
+			from.Skills[skillIndex].Base += newValue;
 
 			Effects.PlaySound( from.Location, from.Map, 0x1F7 );
 			Effects.SendTargetParticles( from, 0x373A, 35, 45, 0x00, 0x00, 9502, (EffectLayer)255, 0x100 );
