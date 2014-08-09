@@ -141,6 +141,18 @@ namespace Server.Misc
 			if ( from.Alive && ( ( gc >= Utility.RandomDouble() && AllowGain( from, skill, amObj ) ) ) )
 				Gain( from, skill );
 
+			if ( skill.Lock == SkillLock.Up )
+			{
+				SkillInfo info = skill.Info;
+
+				if ( from.StrLock == StatLockType.Up && (info.StrGain / 33.3) > Utility.RandomDouble() )
+					GainStat( from, Stat.Str );
+				else if ( from.DexLock == StatLockType.Up && (info.DexGain / 33.3) > Utility.RandomDouble() )
+					GainStat( from, Stat.Dex );
+				else if ( from.IntLock == StatLockType.Up && (info.IntGain / 33.3) > Utility.RandomDouble() )
+					GainStat( from, Stat.Int );
+			}
+
 			return success;
 		}
 
