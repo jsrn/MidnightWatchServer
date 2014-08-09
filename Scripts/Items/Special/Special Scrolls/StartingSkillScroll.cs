@@ -40,6 +40,7 @@ namespace Server.Items
 				Name = "Skill Scroll [" + value + ".0]";
 			}
 			Movable = false;
+			LootType = LootType.Blessed;
 		}
 
 		public StartingSkillScroll(Serial serial) : base(serial)
@@ -147,6 +148,7 @@ namespace Server.Items
 			base.Deserialize(reader);
 
 			int version = ( InheritsItem ? 0 : reader.ReadInt() ); //Required for MidnightWatchSkillScroll insertion
+			LootType = LootType.Blessed;
 		}
 	}
 }
