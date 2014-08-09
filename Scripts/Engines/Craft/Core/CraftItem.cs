@@ -355,8 +355,8 @@ namespace Server.Engines.Craft
 
 		public bool IsMarkable( Type type )
 		{
-			if( m_ForceNonExceptional )	//Don't even display the stuff for marking if it can't ever be exceptional.
-				return false;
+			//if( m_ForceNonExceptional )	//Don't even display the stuff for marking if it can't ever be exceptional.
+			//	return false;
 
 			for ( int i = 0; i < m_MarkableTable.Length; ++i )
 			{
@@ -1309,8 +1309,10 @@ namespace Server.Engines.Craft
 
 					bool makersMark = false;
 
-					if ( quality == 2 && m_From.Skills[m_CraftSystem.MainSkill].Base >= 100.0 )
+					if ( m_From.Skills[m_CraftSystem.MainSkill].Base >= 80.0 )
+					{
 						makersMark = m_CraftItem.IsMarkable( m_CraftItem.ItemType );
+					}
 
 					if ( makersMark && context.MarkOption == CraftMarkOption.PromptForMark )
 					{
