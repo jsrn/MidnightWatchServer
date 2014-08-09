@@ -35,6 +35,22 @@ namespace Server.Misc
 			
 			PackItem( new Dagger() );
 			PackItem( new Candle() );
+
+			
+			for (int i = 0; i < 3; i++)
+			{
+				PackItem( new StartingSkillScroll(70.0) );
+			}
+
+			for (int i = 0; i < 4; i++)
+			{
+				PackItem( new StartingSkillScroll(50.0) );
+			}
+
+			for (int i = 0; i < 3; i++)
+			{
+				PackItem( new StartingSkillScroll(30.0) );
+			}
 		}
 
 		private static void PlaceItemIn( Container parent, int x, int y, Item item )

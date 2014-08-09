@@ -22,6 +22,7 @@ namespace Server.Items
 			return new StartingSkillScroll(Utility.RandomMinMax(min, max) * 0.1);
 		}
 
+		[Constructable]
 		public StartingSkillScroll() : this( 0.0 )
 		{
 		}
@@ -30,7 +31,15 @@ namespace Server.Items
 		public StartingSkillScroll( double value ) : base( value )
 		{
 			ItemID = 0x14EF;
-			Name = "Skill Scroll [" + value + ".0]";
+			if (value == 0.0)
+			{
+				Name = "Skill Scroll";
+			}
+			else
+			{
+				Name = "Skill Scroll [" + value + ".0]";
+			}
+			Movable = false;
 		}
 
 		public StartingSkillScroll(Serial serial) : base(serial)
@@ -60,6 +69,29 @@ namespace Server.Items
 			bool canGain = false;
 			
 			double newValue = Value;
+
+			if ( newValue != 0.0 && tskill != 0.0 )
+			{
+				return; // Don't let people use the starting scrolls multiple times on one skill.
+			}
+
+			if ( newValue == 0.0 ) {
+				if ( tskill < 50 )
+				{
+					newValue = 10.0;
+				}
+				else if ( tskill < 70 )
+				{
+					newValue = 5.0;
+				}
+				else if ( tskill < 90 )
+				{
+					newValue = 2.0;
+				}
+				else {
+					newValue = 1.0;
+				}
+			}
 
 			if ( ( tskill + newValue ) > tcap )
 				newValue = tcap - tskill;
