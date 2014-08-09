@@ -124,7 +124,7 @@ namespace Server.Items
 				return;
 			}
 
-			from.SendLocalizedMessage( 1049513, GetNameLocalized() ); // You feel a surge of magic as the scroll enhances your ~1_type~!
+			from.SendMessage("Hard work pays off. You feel a little more skillful.");
 					
 			from.Skills[skillIndex].Base += newValue;
 
