@@ -43,7 +43,7 @@ namespace Server.Engines.Craft
 
 		private bool m_UseSubRes2;
 
-		private bool m_ForceNonExceptional;
+		private bool m_ForceNonExceptional = true;
 
 		public bool ForceNonExceptional
 		{
