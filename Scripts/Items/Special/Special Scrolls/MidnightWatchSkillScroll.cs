@@ -153,7 +153,7 @@ namespace Server.Items
 					}
 
 					AddHtml( 40, 60 + (fakeIndex * 30), 220, 30, name, true, false );
-					AddButton( 260, 65 + (fakeIndex * 30), 4005, 4007, i, GumpButtonType.Reply, 0 );
+					AddButton( 260, 65 + (fakeIndex * 30), 4005, 4007, i + 1, GumpButtonType.Reply, 0 );
 				}
 
 				fakeIndex = 0;
@@ -168,7 +168,7 @@ namespace Server.Items
 					}
 
 					AddHtml( 310, 60 + (fakeIndex * 30), 220, 30, name, true, false );
-					AddButton( 530, 65 + (fakeIndex * 30), 4005, 4007, i, GumpButtonType.Reply, 0 );
+					AddButton( 530, 65 + (fakeIndex * 30), 4005, 4007, i + 1, GumpButtonType.Reply, 0 );
 				}
 
 				fakeIndex = 0;
@@ -183,13 +183,15 @@ namespace Server.Items
 					}
 
 					AddHtml( 580, 60 + (fakeIndex * 30), 220, 30, name, true, false );
-					AddButton( 800, 65 + (fakeIndex * 30), 4005, 4007, i, GumpButtonType.Reply, 0 );
+					AddButton( 800, 65 + (fakeIndex * 30), 4005, 4007, i + 1, GumpButtonType.Reply, 0 );
 				}
 			}
 
 			public override void OnResponse( NetState state, RelayInfo info )
 			{
-				m_Scroll.Use( m_Mobile, info.ButtonID );
+				if (info.ButtonID != 0 ) {
+					m_Scroll.Use( m_Mobile, info.ButtonID - 1 );
+				}
 			}
 		}
 	}
