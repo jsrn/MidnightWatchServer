@@ -395,7 +395,7 @@ namespace Server.Misc
 
 					if ( skill != null )
 					{
-						skill.BaseFixedPoint = snv.Value * 10;
+						//skill.BaseFixedPoint = snv.Value * 10;
 
 						if ( addSkillItems )
 							AddSkillItems( snv.Name, m );
