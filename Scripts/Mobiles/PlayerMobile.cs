@@ -1465,12 +1465,15 @@ namespace Server.Mobiles
 
 		public override void SetLocation( Point3D loc, bool isTeleport )
 		{
+			int oldLoc = this.Location.Z;
+			int newLoc = loc.Z;
+
 			base.SetLocation( loc, isTeleport );
 
 			if ( !isTeleport && AccessLevel == AccessLevel.Player )
 			{
 				// moving, not teleporting
-				int zDrop = ( this.Location.Z - loc.Z );
+				int zDrop = oldLoc - newLoc;
 
 				if ( zDrop > 20 ) // we fell more than one story
 					Hits -= ((zDrop / 20) * 10) - 5; // deal some damage; does not kill, disrupt, etc
