@@ -1472,6 +1472,9 @@ namespace Server.Mobiles
 
 				if ( zDrop > 20 ) // we fell more than one story
 					Hits -= ((zDrop / 20) * 10) - 5; // deal some damage; does not kill, disrupt, etc
+
+				if ( zDrop > 50 && Utility.RandomBool() )
+					Kill();
 			}
 
 			base.SetLocation( loc, isTeleport );
