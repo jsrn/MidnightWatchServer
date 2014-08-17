@@ -1465,6 +1465,8 @@ namespace Server.Mobiles
 
 		public override void SetLocation( Point3D loc, bool isTeleport )
 		{
+			base.SetLocation( loc, isTeleport );
+
 			if ( !isTeleport && AccessLevel == AccessLevel.Player )
 			{
 				// moving, not teleporting
@@ -1476,8 +1478,6 @@ namespace Server.Mobiles
 				if ( zDrop > 50 && Utility.RandomBool() )
 					Kill();
 			}
-
-			base.SetLocation( loc, isTeleport );
 
 			if ( isTeleport || --m_NextProtectionCheck == 0 )
 				RecheckTownProtection();
