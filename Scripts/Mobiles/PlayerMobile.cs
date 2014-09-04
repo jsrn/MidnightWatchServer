@@ -1479,7 +1479,11 @@ namespace Server.Mobiles
 					Hits -= ((zDrop / 20) * 10) - 5; // deal some damage; does not kill, disrupt, etc
 
 				if ( zDrop > 50 && Utility.RandomBool() )
-					Kill();
+				{
+					Timer timer = Timer.DelayCall( TimeSpan.FromSeconds( 2.0 ), new TimerCallback( delegate( ) {
+						Kill();
+					} ) );
+				}
 			}
 
 			if ( isTeleport || --m_NextProtectionCheck == 0 )
