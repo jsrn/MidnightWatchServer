@@ -34,7 +34,11 @@ namespace Server.Misc
 					Container pack = m.Backpack;
 					if ( pack != null )
 					{
-						pack.DropItem( new StartingSkillScroll(0.0) );
+						Item[] currentScrolls = pack.FindItemsByType( typeof( StartingSkillScroll ), false );
+						if ( currentScrolls.Length < 16 )
+						{
+							pack.DropItem( new StartingSkillScroll(0.0) );
+						}
 					}
 				}
 			}
