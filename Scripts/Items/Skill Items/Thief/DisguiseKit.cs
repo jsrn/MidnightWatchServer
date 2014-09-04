@@ -248,12 +248,14 @@ namespace Server.Items
 						pm.SetHairMods( -2, entry.m_ItemID );
 				}
 
-				m_From.SendGump( new DisguiseGump( m_From, m_Kit, hair, true ) );
-
 				DisguiseTimers.RemoveTimer( m_From );
 				
 				DisguiseTimers.CreateTimer( m_From, TimeSpan.FromHours( 2.0 ) );
 				DisguiseTimers.StartTimer( m_From );
+
+				m_Kit.Delete();
+
+				m_From.SendMessage("You put on the disguise and discard the container.");
 			}
 		}
 
