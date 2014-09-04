@@ -15,7 +15,7 @@ namespace Server.Misc
 			new InjuryDecayTimer().Start();
 		}
 
-		public InjuryDecayTimer() : base( TimeSpan.FromMinutes( 30.0 ), TimeSpan.FromMinutes( 30.0 ) )
+		public InjuryDecayTimer() : base( TimeSpan.FromHours( 2.0 ), TimeSpan.FromHours( 2.0 ) )
 		{
 			Priority = TimerPriority.OneMinute;
 		}

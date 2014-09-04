@@ -1904,7 +1904,7 @@ namespace Server.Mobiles
 
 		public override void Resurrect()
 		{
-			if(InjuryPoints <= 30){
+			if ( InjuryPoints <= 20 ) {
 				bool wasAlive = this.Alive;
 
 				base.Resurrect();
