@@ -71,6 +71,12 @@ namespace Server.Items
 			
 			double newValue = Value;
 
+			if ((skillIndex == 32 || skillIndex == 49) && !((PlayerMobile)from).Undead)
+			{
+				from.SendMessage("Only the Defiled can access this techniques.");
+				return;
+			}
+
 			if ( newValue != 0.0 && tskill != 0.0 )
 			{
 				return; // Don't let people use the starting scrolls multiple times on one skill.

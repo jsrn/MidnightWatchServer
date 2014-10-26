@@ -134,7 +134,7 @@ namespace Server.Items
 
 				AddPage( 0 );
 
-				AddBackground( 25, 10, 840, 550, 5054 );
+				AddBackground( 25, 10, 840, 570, 5054 );
 
 				AddHtml( 40, 20, 260, 30, "Starting Skill Scroll", true, false );
 
@@ -185,6 +185,15 @@ namespace Server.Items
 					AddHtml( 580, 60 + (fakeIndex * 30), 220, 30, name, true, false );
 					AddButton( 800, 65 + (fakeIndex * 30), 4005, 4007, i + 1, GumpButtonType.Reply, 0 );
 				}
+
+				fakeIndex += 1;
+
+				// Evil skills
+				AddHtml( 40, 60 + (fakeIndex * 30), 220, 30, "Spirit Speak", true, false );
+				AddButton( 260, 65 + (fakeIndex * 30), 4005, 4007, 32 + 1, GumpButtonType.Reply, 0 );
+
+				AddHtml( 310, 60 + (fakeIndex * 30), 220, 30, "Necromancy", true, false );
+				AddButton( 530, 65 + (fakeIndex * 30), 4005, 4007, 49 + 1, GumpButtonType.Reply, 0 );
 			}
 
 			public override void OnResponse( NetState state, RelayInfo info )
