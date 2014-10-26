@@ -64,6 +64,13 @@ namespace Server.Items
 		{
 			if ( !CanUse( from ) )
 				return;
+
+			if (skillIndex == 31337) // DESTROY
+			{
+				from.SendMessage("You have destroyed the scroll.");
+				Delete();
+				return;
+			}
 			
 			double tskill = from.Skills[skillIndex].Base; // value of skill without item bonuses etc
 			double tcap = from.Skills[skillIndex].Cap; // maximum value permitted

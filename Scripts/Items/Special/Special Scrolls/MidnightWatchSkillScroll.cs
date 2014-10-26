@@ -194,6 +194,9 @@ namespace Server.Items
 
 				AddHtml( 310, 60 + (fakeIndex * 30), 220, 30, "Necromancy", true, false );
 				AddButton( 530, 65 + (fakeIndex * 30), 4005, 4007, 49 + 1, GumpButtonType.Reply, 0 );
+
+				AddHtml( 580, 60 + (fakeIndex * 30), 220, 30, "DESTROY", true, false );
+				AddButton( 800, 65 + (fakeIndex * 30), 4005, 4007, 31337 + 1, GumpButtonType.Reply, 0 );
 			}
 
 			public override void OnResponse( NetState state, RelayInfo info )
