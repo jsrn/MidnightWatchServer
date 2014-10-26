@@ -181,6 +181,11 @@ namespace Server.Engines.Craft
 			AddCraft( typeof( FletcherTools ), 1044046, 1044166, 35.0, 85.0, typeof( IronIngot ), 1044036, 3, 1044037 );
 			AddCraft( typeof( MapmakersPen ), 1044046, 1044167, 25.0, 75.0, typeof( IronIngot ), 1044036, 1, 1044037 );
 			AddCraft( typeof( ScribesPen ), 1044046, 1044168, 25.0, 75.0, typeof( IronIngot ), 1044036, 1, 1044037 );
+			// Medkit
+			index = AddCraft( typeof( MedKit ), 1044046, "med kit", 30.0, 80.0, typeof( IronIngot ), 1044036, 2, 1044037 );
+			AddRes( index, typeof( Bandage ), "Bandages", 10, "The kit needs some bandages, too." );
+			AddRes( index, typeof( HealPotion ), "Healing potion", 1, "The kit needs some potions." );
+			AddRes( index, typeof( CurePotion ), "Cure potion", 1, "The kit needs some potions." );
 			#endregion
 
 			#region Parts
