@@ -58,7 +58,7 @@ namespace Server.Misc
 			// Set stat mod if player
 			if (m.Player)
 			{
-				int diff = (20 - m.Hunger) / 2;
+				int diff = (20 - m.Thirst) / 2;
 				m.RemoveStatMod("ThirstStr");
 				m.RemoveStatMod("ThirstDex");
 				m.RemoveStatMod("ThirstInt");
