@@ -51,6 +51,12 @@ namespace Server.Mobiles
 				case 8: PackItem( new BonePile() ); break;
 				case 9: PackItem( new BonePile() ); break;
 			}
+
+			if (Utility.Random(20) == 0)
+			{
+				Name = "a fast zombie";
+				CurrentSpeed = 0.2;
+			}
 		}
 
 		public override bool CanOpenDoors { get { return false; } }
