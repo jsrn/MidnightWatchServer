@@ -1,6 +1,7 @@
 using System;
 using Server.Network;
 using Server;
+using Server.Spells;
 
 namespace Server.Misc
 {
@@ -11,7 +12,7 @@ namespace Server.Misc
 			new FoodDecayTimer().Start();
 		}
 
-		public FoodDecayTimer() : base( TimeSpan.FromMinutes( 5 ), TimeSpan.FromMinutes( 5 ) )
+		public FoodDecayTimer() : base( TimeSpan.FromMinutes( 1 ), TimeSpan.FromMinutes( 1 ) )
 		{
 			Priority = TimerPriority.OneMinute;
 		}
@@ -32,13 +33,41 @@ namespace Server.Misc
 
 		public static void HungerDecay( Mobile m )
 		{
-			if ( m != null && m.Hunger >= 1 )
+			if (m == null) return;
+
+			// Set stat mod if player
+			if (m.Player)
+			{
+				int diff = (20 - m.Hunger) / 2;
+				m.RemoveStatMod("HungerStr");
+				m.RemoveStatMod("HungerDex");
+				m.RemoveStatMod("HungerInt");
+				m.AddStatMod( new StatMod( StatType.Str, "HungerStr", -diff, TimeSpan.Zero ) );
+				m.AddStatMod( new StatMod( StatType.Dex, "HungerDex", -diff, TimeSpan.Zero ) );
+				m.AddStatMod( new StatMod( StatType.Int, "HungerInt", -diff, TimeSpan.Zero ) );
+			}
+
+			if ( m.Hunger >= 1 )
 				m.Hunger -= 1;
 		}
 
 		public static void ThirstDecay( Mobile m )
 		{
-			if ( m != null && m.Thirst >= 1 )
+			if (m == null) return;
+
+			// Set stat mod if player
+			if (m.Player)
+			{
+				int diff = (20 - m.Hunger) / 2;
+				m.RemoveStatMod("ThirstStr");
+				m.RemoveStatMod("ThirstDex");
+				m.RemoveStatMod("ThirstInt");
+				m.AddStatMod( new StatMod( StatType.Str, "ThirstStr", -diff, TimeSpan.Zero ) );
+				m.AddStatMod( new StatMod( StatType.Dex, "ThirstDex", -diff, TimeSpan.Zero ) );
+				m.AddStatMod( new StatMod( StatType.Int, "ThirstInt", -diff, TimeSpan.Zero ) );
+			}
+
+			if ( m.Thirst >= 1 )
 				m.Thirst -= 1;
 		}
 	}
