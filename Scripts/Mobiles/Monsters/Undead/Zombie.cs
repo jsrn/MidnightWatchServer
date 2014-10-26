@@ -56,6 +56,8 @@ namespace Server.Mobiles
 			{
 				Name = "a fast zombie";
 				CurrentSpeed = 0.2;
+				ActiveSpeed = 0.2;
+				PassiveSpeed = 0.2;
 			}
 		}
 
