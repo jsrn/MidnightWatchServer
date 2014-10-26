@@ -129,6 +129,11 @@ namespace Server.Items
 					
 			from.Skills[skillIndex].Base += newValue;
 
+			if ( from.Skills[skillIndex].Base > 100.0 )
+			{
+				from.Skills[skillIndex].Base = 100.0;
+			}
+
 			Effects.PlaySound( from.Location, from.Map, 0x1F7 );
 			Effects.SendTargetParticles( from, 0x373A, 35, 45, 0x00, 0x00, 9502, (EffectLayer)255, 0x100 );
 			Effects.SendTargetParticles( from, 0x376A, 35, 45, 0x00, 0x00, 9502, (EffectLayer)255, 0x100 );
