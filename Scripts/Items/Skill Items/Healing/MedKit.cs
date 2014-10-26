@@ -177,9 +177,38 @@ namespace Server.Items {
 				double anatomy = m_Healer.Skills[secondarySkill].Value;
 				double chance = ((healing + 10.0) / 100.0) - (m_Slips * 0.02);
 
+				int amount = 0;
+
+				if (anatomy == 100.0)
+				{
+					amount = 5;
+				}
+				else if (anatomy >= 80.0)
+				{
+					amount = 4;
+				}
+				else if (anatomy >= 60)
+				{
+					amount = 3;
+				}
+				else if (anatomy >= 40)
+				{
+					amount = 2;
+				}
+				else
+				{
+					amount = 1;
+				}
+
 				if ( chance > Utility.RandomDouble() )
 				{
-					((PlayerMobile)m_Patient).InjuryPoints -= 5;
+					((PlayerMobile)m_Patient).InjuryPoints -= amount;
+
+					if (((PlayerMobile)m_Patient).InjuryPoints < 0)
+					{
+						((PlayerMobile)m_Patient).InjuryPoints = 0;
+					}
+					
 					m_Patient.SendMessage("They finish patching you up.");
 					m_Healer.SendMessage("You finish treating the patient.");
 				}
@@ -261,8 +290,7 @@ namespace Server.Items {
 				if ( !onSelf )
 					patient.SendLocalizedMessage( 1008078, false, healer.Name ); //  : Attempting to heal you.
 
-				
-				healer.SendLocalizedMessage( 500956 ); // You begin applying the MedKits.
+				healer.SendMessage("You begin working on the patient...");
 				return context;
 			}
 
