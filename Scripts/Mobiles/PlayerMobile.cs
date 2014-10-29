@@ -754,6 +754,8 @@ namespace Server.Mobiles
 
 			CheckAtrophies( from );
 
+			((PlayerMobile)from).SetHungerMods();
+
 			if ( AccountHandler.LockdownLevel > AccessLevel.Player )
 			{
 				string notice;
@@ -784,6 +786,26 @@ namespace Server.Mobiles
 
 			if( from is PlayerMobile )
 				((PlayerMobile)from).ClaimAutoStabledPets();
+		}
+
+		private void SetHungerMods()
+		{
+			// Set stat mod
+			int diff = (20 - Hunger) / 2;
+			RemoveStatMod("HungerStr");
+			RemoveStatMod("HungerDex");
+			RemoveStatMod("HungerInt");
+			AddStatMod( new StatMod( StatType.Str, "HungerStr", -diff, TimeSpan.Zero ) );
+			AddStatMod( new StatMod( StatType.Dex, "HungerDex", -diff, TimeSpan.Zero ) );
+			AddStatMod( new StatMod( StatType.Int, "HungerInt", -diff, TimeSpan.Zero ) );
+
+			diff = (20 - Thirst) / 2;
+			RemoveStatMod("ThirstStr");
+			RemoveStatMod("ThirstDex");
+			RemoveStatMod("ThirstInt");
+			AddStatMod( new StatMod( StatType.Str, "ThirstStr", -diff, TimeSpan.Zero ) );
+			AddStatMod( new StatMod( StatType.Dex, "ThirstDex", -diff, TimeSpan.Zero ) );
+			AddStatMod( new StatMod( StatType.Int, "ThirstInt", -diff, TimeSpan.Zero ) );
 		}
 
 		private bool m_NoDeltaRecursion;
