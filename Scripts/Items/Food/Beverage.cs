@@ -996,6 +996,15 @@ namespace Server.Items
 				if( from.Thirst < 20 )
 					from.Thirst += 1;
 
+				// Set stat mod
+				int diff = (20 - from.Thirst) / 2;
+				from.RemoveStatMod("ThirstStr");
+				from.RemoveStatMod("ThirstDex");
+				from.RemoveStatMod("ThirstInt");
+				from.AddStatMod( new StatMod( StatType.Str, "ThirstStr", -diff, TimeSpan.Zero ) );
+				from.AddStatMod( new StatMod( StatType.Dex, "ThirstDex", -diff, TimeSpan.Zero ) );
+				from.AddStatMod( new StatMod( StatType.Int, "ThirstInt", -diff, TimeSpan.Zero ) );
+
 				if( ContainsAlchohol )
 				{
 					int bac = 0;
