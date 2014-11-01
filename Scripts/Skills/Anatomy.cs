@@ -64,17 +64,35 @@ namespace Server.SkillHandlers
 					string hungerMessage = "";
 
 					if( hungerAmount == 0)
-						hungerMessage += "You are very hungry. [" + hungerAmount + "/20]";
+						hungerMessage += "You are very hungry.";
 					else if (hungerAmount < 5)
-						hungerMessage += "You are quite hungry. [" + hungerAmount + "/20]";
+						hungerMessage += "You are quite hungry.";
 					else if (hungerAmount < 10)
-						hungerMessage += "You are a little hungry. [" + hungerAmount + "/20]";
+						hungerMessage += "You are a little hungry.";
 					else if (hungerAmount < 15)
-						hungerMessage += "You are peckish. [" + hungerAmount + "/20]";
+						hungerMessage += "You are peckish.";
 					else
-						hungerMessage += "You are full. [" + hungerAmount + "/20]";
+						hungerMessage += "You aren't hungry.";
 
 					targ.PrivateOverheadMessage( MessageType.Regular, 0x3B2, true, hungerMessage, from.NetState );
+				}
+
+				if( from == targ ){
+					int thirstAmount = targ.Thirst;
+					string thirstMessage = "";
+
+					if( thirstAmount == 0)
+						thirstMessage += "You are very thirsty.";
+					else if (thirstAmount < 5)
+						thirstMessage += "You are quite thirsty.";
+					else if (thirstAmount < 10)
+						thirstMessage += "You are a little thirsty.";
+					else if (thirstAmount < 15)
+						thirstMessage += "You are parched.";
+					else
+						thirstMessage += "You aren't thirsty.";
+
+					targ.PrivateOverheadMessage( MessageType.Regular, 0x3B2, true, thirstMessage, from.NetState );
 				}
 			}
 
