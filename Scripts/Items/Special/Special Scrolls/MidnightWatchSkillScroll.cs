@@ -136,7 +136,7 @@ namespace Server.Items
 
 				AddBackground( 25, 10, 840, 570, 5054 );
 
-				AddHtml( 40, 20, 260, 30, "Starting Skill Scroll", true, false );
+				AddHtml( 40, 20, 260, 30, "Skill Scroll", true, false );
 
 				// Add skill entries
 				SkillInfo[] table = SkillInfo.Table;
