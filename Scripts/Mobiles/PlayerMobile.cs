@@ -788,21 +788,25 @@ namespace Server.Mobiles
 				((PlayerMobile)from).ClaimAutoStabledPets();
 		}
 
-		private void SetHungerMods()
+		public void SetHungerMods()
 		{
-			// Set stat mod
-			int diff = (20 - Hunger) / 2;
 			RemoveStatMod("HungerStr");
 			RemoveStatMod("HungerDex");
 			RemoveStatMod("HungerInt");
+
+			RemoveStatMod("ThirstStr");
+			RemoveStatMod("ThirstDex");
+			RemoveStatMod("ThirstInt");
+
+			if (Undead) return;
+
+			// Set stat mod
+			int diff = (20 - Hunger) / 2;
 			AddStatMod( new StatMod( StatType.Str, "HungerStr", -diff, TimeSpan.Zero ) );
 			AddStatMod( new StatMod( StatType.Dex, "HungerDex", -diff, TimeSpan.Zero ) );
 			AddStatMod( new StatMod( StatType.Int, "HungerInt", -diff, TimeSpan.Zero ) );
 
 			diff = (20 - Thirst) / 2;
-			RemoveStatMod("ThirstStr");
-			RemoveStatMod("ThirstDex");
-			RemoveStatMod("ThirstInt");
 			AddStatMod( new StatMod( StatType.Str, "ThirstStr", -diff, TimeSpan.Zero ) );
 			AddStatMod( new StatMod( StatType.Dex, "ThirstDex", -diff, TimeSpan.Zero ) );
 			AddStatMod( new StatMod( StatType.Int, "ThirstInt", -diff, TimeSpan.Zero ) );
