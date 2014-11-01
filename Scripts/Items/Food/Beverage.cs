@@ -994,16 +994,15 @@ namespace Server.Items
 			else if( from == targ )
 			{
 				if( from.Thirst < 20 )
-					from.Thirst += 1;
+					from.Thirst += 5;
 
-				// Set stat mod
-				int diff = (20 - from.Thirst) / 2;
-				from.RemoveStatMod("ThirstStr");
-				from.RemoveStatMod("ThirstDex");
-				from.RemoveStatMod("ThirstInt");
-				from.AddStatMod( new StatMod( StatType.Str, "ThirstStr", -diff, TimeSpan.Zero ) );
-				from.AddStatMod( new StatMod( StatType.Dex, "ThirstDex", -diff, TimeSpan.Zero ) );
-				from.AddStatMod( new StatMod( StatType.Int, "ThirstInt", -diff, TimeSpan.Zero ) );
+				if( from.Thirst > 20 )
+					from.Thirst = 20;
+
+				if (from.Player)
+				{
+					((PlayerMobile)from).SetHungerMods();
+				}
 
 				if( ContainsAlchohol )
 				{
