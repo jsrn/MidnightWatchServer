@@ -25,12 +25,15 @@ namespace Server.Items
 		[Constructable]
 		public StartingSkillScroll() : this( 0.0 )
 		{
+			Stackable = true;
+			Amount = 1;
+			Hue = 53;
 		}
 		
 		[Constructable]
 		public StartingSkillScroll( double value ) : base( value )
 		{
-			ItemID = 0x14EF;
+			ItemID = 0x226E;
 			if (value == 0.0)
 			{
 				Name = "Skill Scroll";
@@ -39,7 +42,6 @@ namespace Server.Items
 			{
 				Name = "Skill Scroll [" + value + ".0]";
 			}
-			Movable = false;
 			LootType = LootType.Blessed;
 		}
 
@@ -68,7 +70,7 @@ namespace Server.Items
 			if (skillIndex == 31337) // DESTROY
 			{
 				from.SendMessage("You have destroyed the scroll.");
-				Delete();
+				Consume();
 				return;
 			}
 			
@@ -151,7 +153,7 @@ namespace Server.Items
 			Effects.SendTargetParticles( from, 0x373A, 35, 45, 0x00, 0x00, 9502, (EffectLayer)255, 0x100 );
 			Effects.SendTargetParticles( from, 0x376A, 35, 45, 0x00, 0x00, 9502, (EffectLayer)255, 0x100 );
 
-			Delete();
+			Consume();
 		}
 		
 		public override void Serialize( GenericWriter writer )
@@ -167,6 +169,29 @@ namespace Server.Items
 
 			int version = ( InheritsItem ? 0 : reader.ReadInt() ); //Required for MidnightWatchSkillScroll insertion
 			LootType = LootType.Blessed;
+		}
+
+		public override bool DropToItem( Mobile from, Item target, Point3D p )
+		{
+			if ( target is StartingSkillScroll )
+				return base.DropToItem( from, target, p );
+
+			return false;
+		}
+
+		public override bool AllowSecureTrade( Mobile from, Mobile to, Mobile newOwner, bool accepted )
+		{
+			return false;
+		}
+
+		public override bool DropToMobile( Mobile from, Mobile target, Point3D p )
+		{
+			return false;
+		}
+
+		public override bool DropToWorld( Mobile from, Point3D p )
+		{
+			return false;
 		}
 	}
 }
