@@ -999,6 +999,17 @@ namespace Server.Items
 				if( from.Thirst > 20 )
 					from.Thirst = 20;
 
+				if ( from.Thirst < 5 )
+					from.SendMessage( "You drink, but are still extremely thirsty." );
+				else if ( from.Thirst < 10 )
+					from.SendMessage( "You drink, and begin to feel more satiated." );
+				else if ( from.Thirst < 15 )
+					from.SendMessage( "After drinking, you feel much less thirsty." );
+				else if ( from.Thirst < 20 )
+					from.SendMessage( "You feel quite full after drinking." );
+				else
+					from.SendMessage( "You couldn't drink another drop!" );
+
 				if (from.Player)
 				{
 					((PlayerMobile)from).SetHungerMods();
