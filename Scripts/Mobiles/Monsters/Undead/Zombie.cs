@@ -64,7 +64,7 @@ namespace Server.Mobiles
 		public override bool CanOpenDoors { get { return false; } }
 		public override bool BleedImmune{ get{ return true; } }
 		public override Poison PoisonImmune{ get{ return Poison.Regular; } }
-		public override PackInstinct PackInstinct{ get{ return PackInstinct.Canine; } }
+		public override PackInstinct PackInstinct{ get{ return PackInstinct.Zombie; } }
 
 		public Zombie( Serial serial ) : base( serial )
 		{

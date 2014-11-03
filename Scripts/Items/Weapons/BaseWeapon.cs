@@ -1186,35 +1186,21 @@ namespace Server.Items
 
 			BaseCreature bc = attacker as BaseCreature;
 
-			if ( bc == null || bc.PackInstinct == PackInstinct.None || (!bc.Controlled && !bc.Summoned) )
-				return 0;
-
-			Mobile master = bc.ControlMaster;
-
-			if ( master == null )
-				master = bc.SummonMaster;
-
-			if ( master == null )
+			if ( bc == null || bc.PackInstinct == PackInstinct.None )
 				return 0;
 
 			int inPack = 1;
 
-			foreach ( Mobile m in defender.GetMobilesInRange( 1 ) )
+			foreach ( Mobile m in defender.GetMobilesInRange( 3 ) )
 			{
 				if ( m != attacker && m is BaseCreature )
 				{
 					BaseCreature tc = (BaseCreature)m;
 
-					if ( (tc.PackInstinct & bc.PackInstinct) == 0 || (!tc.Controlled && !tc.Summoned) )
+					if ( (tc.PackInstinct & bc.PackInstinct) == 0 )
 						continue;
 
-					Mobile theirMaster = tc.ControlMaster;
-
-					if ( theirMaster == null )
-						theirMaster = tc.SummonMaster;
-
-					if ( master == theirMaster && tc.Combatant == defender )
-						++inPack;
+					++inPack;
 				}
 			}
 

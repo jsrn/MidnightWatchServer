@@ -73,7 +73,8 @@ namespace Server.Mobiles
 		Daemon			= 0x0010,
 		Bear			= 0x0020,
 		Equine			= 0x0040,
-		Bull			= 0x0080
+		Bull			= 0x0080,
+		Zombie          = 0x0160
 	}
 
 	public enum ScaleType
