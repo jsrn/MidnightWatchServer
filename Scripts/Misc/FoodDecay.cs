@@ -30,7 +30,7 @@ namespace Server.Misc
 				HungerDecay( state.Mobile );
 				ThirstDecay( state.Mobile );
 
-				if (state.Mobile.Player)
+				if ( state.Mobile != null && state.Mobile.Player)
 				{
 					((PlayerMobile)state.Mobile).SetHungerMods();
 				}
