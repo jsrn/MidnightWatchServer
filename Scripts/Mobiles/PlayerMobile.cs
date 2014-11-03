@@ -800,16 +800,24 @@ namespace Server.Mobiles
 
 			if (Undead) return;
 
-			// Set stat mod
-			int diff = (20 - Hunger) / 2;
-			AddStatMod( new StatMod( StatType.Str, "HungerStr", -diff, TimeSpan.Zero ) );
-			AddStatMod( new StatMod( StatType.Dex, "HungerDex", -diff, TimeSpan.Zero ) );
-			AddStatMod( new StatMod( StatType.Int, "HungerInt", -diff, TimeSpan.Zero ) );
+			int diff;
 
-			diff = (20 - Thirst) / 2;
-			AddStatMod( new StatMod( StatType.Str, "ThirstStr", -diff, TimeSpan.Zero ) );
-			AddStatMod( new StatMod( StatType.Dex, "ThirstDex", -diff, TimeSpan.Zero ) );
-			AddStatMod( new StatMod( StatType.Int, "ThirstInt", -diff, TimeSpan.Zero ) );
+			// Set stat mod
+			if ( Hunger < 15 )
+			{
+				diff = (20 - Hunger) / 2;
+				AddStatMod( new StatMod( StatType.Str, "HungerStr", -diff, TimeSpan.Zero ) );
+				AddStatMod( new StatMod( StatType.Dex, "HungerDex", -diff, TimeSpan.Zero ) );
+				AddStatMod( new StatMod( StatType.Int, "HungerInt", -diff, TimeSpan.Zero ) );
+			}
+
+			if ( Thirst < 15 )
+			{
+				diff = (20 - Thirst) / 2;
+				AddStatMod( new StatMod( StatType.Str, "ThirstStr", -diff, TimeSpan.Zero ) );
+				AddStatMod( new StatMod( StatType.Dex, "ThirstDex", -diff, TimeSpan.Zero ) );
+				AddStatMod( new StatMod( StatType.Int, "ThirstInt", -diff, TimeSpan.Zero ) );
+			}
 		}
 
 		private bool m_NoDeltaRecursion;

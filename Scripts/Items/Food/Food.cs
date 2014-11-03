@@ -96,14 +96,7 @@ namespace Server.Items
 				if( from.Hits > from.HitsMax )
 					from.Hits = from.HitsMax;
 
-				// Set stat mod
-				int diff = (20 - from.Hunger) / 2;
-				from.RemoveStatMod("HungerStr");
-				from.RemoveStatMod("HungerDex");
-				from.RemoveStatMod("HungerInt");
-				from.AddStatMod( new StatMod( StatType.Str, "HungerStr", -diff, TimeSpan.Zero ) );
-				from.AddStatMod( new StatMod( StatType.Dex, "HungerDex", -diff, TimeSpan.Zero ) );
-				from.AddStatMod( new StatMod( StatType.Int, "HungerInt", -diff, TimeSpan.Zero ) );
+				((PlayerMobile)from).SetHungerMods();
 
 				Consume();
 
