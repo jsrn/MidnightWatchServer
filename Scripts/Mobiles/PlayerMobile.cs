@@ -808,14 +808,14 @@ namespace Server.Mobiles
 				diff = (20 - Hunger) / 2;
 				AddStatMod( new StatMod( StatType.Str, "HungerStr", -diff, TimeSpan.Zero ) );
 				AddStatMod( new StatMod( StatType.Dex, "HungerDex", -diff, TimeSpan.Zero ) );
-				AddStatMod( new StatMod( StatType.Int, "HungerInt", -diff, TimeSpan.Zero ) );
+				//AddStatMod( new StatMod( StatType.Int, "HungerInt", -diff, TimeSpan.Zero ) );
 			}
 
 			if ( Thirst < 15 )
 			{
 				diff = (20 - Thirst) / 2;
-				AddStatMod( new StatMod( StatType.Str, "ThirstStr", -diff, TimeSpan.Zero ) );
-				AddStatMod( new StatMod( StatType.Dex, "ThirstDex", -diff, TimeSpan.Zero ) );
+				//AddStatMod( new StatMod( StatType.Str, "ThirstStr", -diff, TimeSpan.Zero ) );
+				//AddStatMod( new StatMod( StatType.Dex, "ThirstDex", -diff, TimeSpan.Zero ) );
 				AddStatMod( new StatMod( StatType.Int, "ThirstInt", -diff, TimeSpan.Zero ) );
 			}
 		}
