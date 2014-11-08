@@ -182,7 +182,8 @@ namespace Server
 
 		public static readonly LootPack OldRich = new LootPack( new LootPackEntry[]
 			{
-				new LootPackEntry(  true, Gold,			4.00, "5d10" )
+				new LootPackEntry(  true, Gold,			4.00, "5d10" ),
+				new LootPackEntry(  true, Relic,        1.00,  1 )
 			} );
 
 		public static readonly LootPack OldFilthyRich = new LootPack( new LootPackEntry[]
