@@ -136,6 +136,15 @@ namespace Server
 				new LootPackItem( typeof( LesserPoisonPotion ), 1 )
 			};
 
+		public static readonly LootPackItem[] ToolItems = new LootPackItem[]
+			{
+				new LootPackItem( typeof( TinkerTools ),   1 ),
+				new LootPackItem( typeof( SmithHammer ),   1 ),
+				new LootPackItem( typeof( FletcherTools ), 1 ),
+				new LootPackItem( typeof( MortarPestle ),  1 ),
+				new LootPackItem( typeof( SewingKit ),     1 )
+			};
+
 		#region Old Magic Items
 		public static readonly LootPackItem[] OldMagicItems = new LootPackItem[]
 			{
