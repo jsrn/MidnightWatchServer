@@ -100,6 +100,11 @@ namespace Server
 				new LootPackItem( typeof( Gold ), 1 )
 			};
 
+		public static readonly LootPackItem[] Relic = new LootPackItem[]
+			{
+				new LootPackItem( typeof( Relic ), 1 )
+			};
+
 		public static readonly LootPackItem[] Instruments = new LootPackItem[]
 			{
 				new LootPackItem( typeof( BaseInstrument ), 1 )
