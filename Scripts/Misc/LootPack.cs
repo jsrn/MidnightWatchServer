@@ -100,6 +100,11 @@ namespace Server
 				new LootPackItem( typeof( Gold ), 1 )
 			};
 
+		public static readonly LootPackItem[] Relic = new LootPackItem[]
+			{
+				new LootPackItem( typeof( Relic ), 1 )
+			};
+
 		public static readonly LootPackItem[] Instruments = new LootPackItem[]
 			{
 				new LootPackItem( typeof( BaseInstrument ), 1 )
@@ -244,6 +249,11 @@ namespace Server
 		public static readonly LootPack Potions = new LootPack( new LootPackEntry[]
 			{
 				new LootPackEntry( false, PotionItems,		100.00, 1 )
+			} );
+
+		public static readonly LootPack Tools = new LootPack( new LootPackEntry[]
+			{
+				new LootPackEntry( false, ToolItems,	10.00, 1 )
 			} );
 	}
 

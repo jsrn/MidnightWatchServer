@@ -303,15 +303,7 @@ namespace Server.Mobiles
 						case 0x0002: // *bank*
 						{
 							e.Handled = true;
-
-							if ( e.Mobile.Criminal )
-							{
-								this.Say( 500378 ); // Thou art a criminal and cannot access thy bank box.
-								break;
-							}
-
 							e.Mobile.BankBox.Open();
-
 							break;
 						}
 						case 0x0003: // *check*
