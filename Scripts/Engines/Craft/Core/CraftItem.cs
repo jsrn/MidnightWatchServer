@@ -43,7 +43,7 @@ namespace Server.Engines.Craft
 
 		private bool m_UseSubRes2;
 
-		private bool m_ForceNonExceptional = true;
+		private bool m_ForceNonExceptional;
 
 		public bool ForceNonExceptional
 		{
@@ -355,8 +355,8 @@ namespace Server.Engines.Craft
 
 		public bool IsMarkable( Type type )
 		{
-			//if( m_ForceNonExceptional )	//Don't even display the stuff for marking if it can't ever be exceptional.
-			//	return false;
+			if( m_ForceNonExceptional )	//Don't even display the stuff for marking if it can't ever be exceptional.
+				return false;
 
 			for ( int i = 0; i < m_MarkableTable.Length; ++i )
 			{
