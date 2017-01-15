@@ -2,3 +2,11 @@ Saves/Accounts
 Backups/
 GameData/
 *.log
+Mobiles/Mobiles.bin
+*.tdb
+Accounts/accounts.xml
+*.bin
+*.idx
+Saves/Mobiles/Mobiles.tdb
+Saves/Mobiles/Mobiles.bin
+Saves/Items/Items.tdb
