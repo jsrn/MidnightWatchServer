@@ -695,7 +695,7 @@ namespace Server.Guilds
 
 		public static bool NewGuildSystem{ get{ return true; } }
 
-		public static readonly int RegistrationFee = 25000;
+		public static readonly int RegistrationFee = 500;
 		public static readonly int AbbrevLimit = 4;
 		public static readonly int NameLimit = 40;
 		public static readonly int MajorityPercentage = 66;
