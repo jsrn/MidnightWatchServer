@@ -194,7 +194,7 @@ namespace Server.Misc
 		{
 			if ( from.Player )
 			{
-				return false; // Only allow gain from scrolls
+				return true; // Only allow gain from scrolls
 			}
 
 			if ( Core.AOS && Faction.InSkillLoss( from ) )	//Changed some time between the introduction of AoS and SE.
